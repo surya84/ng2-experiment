@@ -1,0 +1,45 @@
+{
+  "name": "sg-associate-portal",
+  "version": "2.0.0",
+  "description": "This is an application for SenecaGlobal",
+  "repository": "https://github.com/surya84/ng2-experiment.git",
+  "scripts": {
+    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "lite": "lite-server",
+    "postinstall": "typings install",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "typings": "typings"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@angular/common": "2.0.0-rc.4",
+    "@angular/compiler": "2.0.0-rc.4",
+    "@angular/core": "2.0.0-rc.4",
+    "@angular/forms": "0.2.0",
+    "@angular/http": "2.0.0-rc.4",
+    "@angular/platform-browser": "2.0.0-rc.4",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.4",
+    "@angular/router": "3.0.0-beta.1",
+    "@angular/router-deprecated": "*",
+    "@angular/upgrade": "2.0.0-rc.4",
+    "@vaadin/angular2-polymer": "1.0.0-beta2",
+    "angular2-in-memory-web-api": "0.0.14",
+    "bootstrap": "^3.3.6",
+    "core-js": "^2.4.0",
+    "moment": "^2.14.1",
+    "ng2-pagination": "0.3.5",
+    "pace": "0.0.4",
+    "reflect-metadata": "^0.1.3",
+    "rxjs": "5.0.0-beta.6",
+    "sweetalert2": "*",
+    "systemjs": "0.19.27",
+    "typings": "^1.3.2",
+    "zone.js": "^0.6.12"
+  },
+  "devDependencies": {
+    "concurrently": "^2.0.0",
+    "lite-server": "^2.2.0",
+    "typescript": "^1.8.10"
+  }
+}

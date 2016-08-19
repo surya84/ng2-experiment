@@ -1,0 +1,8 @@
+﻿@import 'grid.css';
+@import 'button.css';
+vaadin-grid {
+    --primary-color: red;
+    --vaadin-grid-row-height: 30px;
+    --vaadin-grid-header-row-height: 40px;
+    --vaadin-grid-footer-row-height: 40px;
+}

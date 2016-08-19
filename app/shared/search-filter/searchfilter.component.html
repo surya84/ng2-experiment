@@ -1,0 +1,45 @@
+<!--<div class="toolbar">
+    Filters
+    <iron-icon icon="filter-list"></iron-icon>
+    <div class="badge">{{activeFilterCount}}</div>
+</div>-->
+<div class="container-fluid">
+    <section class="row searcharea">
+        <section class="col-md-3">
+            <vaadin-combo-box (selected-item-changed)="filtersChanged($event)" class="columns" [items]="columns" label="Select" item-label-path="displayName"
+                item-value-path="name" [(value)]="selectedFilterColumn.name"></vaadin-combo-box>
+        </section>
+
+        <section class="col-md-5">
+            <div class="row">
+                <div class="col-md-6" [class.hidden]="selectedFilterColumn.type != 'string'">
+                    <paper-input placeholder="Contains" label="Search term" [(value)]="selectedFilterColumn.value.contains">
+                    </paper-input>
+                </div>
+
+                <div class="col-md-12" [class.hidden]="selectedFilterColumn.type != 'date'">
+                    <div class="col-md-6">
+                        <vaadin-date-picker #minDate label="Minimum" [(value)]="selectedFilterColumn.value.min"></vaadin-date-picker>
+                    </div>
+                    <div class="col-md-6">
+                        <vaadin-date-picker #maxDate label="Maximum" [(value)]="selectedFilterColumn.value.max"></vaadin-date-picker>
+                    </div>
+                </div>
+
+                <div class="col-md-6" [class.hidden]="selectedFilterColumn.type != 'boolean'">
+                    <!--<paper-checkbox noink [(value)]="selectedFilterColumn.value.is">Checkbox</paper-checkbox>-->
+                    <input class="checkbox-huge" type="checkbox" [(ngModel)]="selectedFilterColumn.value.is">
+                </div>
+            </div>
+        </section>
+
+        <section class="col-md-4 pull-right actions">
+            <paper-button class="search" (click)="onSearch()" raised>
+                <iron-icon icon="search"></iron-icon>
+            </paper-button>
+
+            <paper-button class="clear" (click)="onClear()" raised>Clear</paper-button>
+        </section>
+    </section>
+</div>
+<paper-toast #searchFilterToast id="searchFilterToast" text="Please select a filter"></paper-toast>

@@ -1,0 +1,193 @@
+<!-- template -->
+<!-- /#wrapper -->
+<div class="wrapper">
+    <!-- Main Header -->
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="#" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <!--<span class="logo-mini"><b>A2</b>DS</span>-->
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg">
+                &nbsp;&nbsp; Associate Portal
+            </span>
+        </a>
+        <!-- Header Navbar -->
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+            <!-- Navbar Right Menu -->
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <!-- Notifications Menu -->
+                    <li class="dropdown notifications-menu">
+                        <!-- Menu toggle button -->
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-bell-o"></i>
+                            <span class="label label-warning">{{ notificationCount }}</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">You have {{ notificationCount }} notifications</li>
+                            <li>
+                                <!-- Inner Menu: contains the notifications -->
+                                <ul class="menu">
+                                    <li>
+                                        <!-- start notification -->
+                                        <!--<a href="#">
+                                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                                        </a>-->
+                                    </li>
+                                    <!-- end notification -->
+                                </ul>
+                            </li>
+                            <li class="footer"><a [routerLink]="['/ap/dashboard']">View all</a></li>
+                        </ul>
+                    </li>
+                    <!-- User Account Menu -->
+                    <li class="dropdown user user-menu">
+                        <!-- Menu Toggle Button -->
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <!-- The user image in the navbar-->
+                            <!--<img src="app/assets/img/user2-160x160.png" class="user-image" alt="User Image">-->
+                            <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                            <span class="hidden-xs">{{loginData.fullName | uppercase}}</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- The user image in the menu -->
+                            <li class="user-header">
+                                <!--<img src="app/assets/img/user2-160x160.png" class="img-circle" alt="User Image">-->
+                                <p>
+                                    {{ loginData.fullName | uppercase }}
+                                </p>
+                            </li>
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a class="btn btn-default btn-flat" (click)="profile($event)">Profile</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="#" (click)='logout()' class="btn btn-default btn-flat">Sign out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar user panel (optional) -->
+            <!--<div class="user-panel">
+                <div class="pull-left image">
+                    <img src="app/assets/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>{{loginData.fullName}}</p>
+                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                </div>
+            </div>-->
+            <!-- search form (Optional) -->
+            <form action="#" method="get" class="sidebar-form">
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </form>
+            <!-- /.search form -->
+            <!-- Sidebar Menu -->
+            <ul class="sidebar-menu">
+                <!--<li class="header">HEADER</li>-->
+                <!-- Optionally, you can add icons to the links -->
+                <li class="active">
+                    <a [routerLink]="['/ap/dashboard']">
+                        <i class="fa fa-home"></i> <span>
+                            Dashboard
+                        </span>
+                    </a>
+                </li>
+
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-users"></i>
+                        <span>Associates</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>
+                            <a [routerLinkActive]="['active']" [routerLink]="['/ap/associates/new']"><i class="fa fa-user-plus"></i><span>New Associate</span></a>
+                        </li>
+                        <li>
+                            <a [routerLinkActive]="['active']" [routerLink]="['/ap/associates/prospective-associates']"><i class="fa fa-pencil-square"></i><span>Prospective Associates</span></a>
+                        </li>
+                        <li>
+                            <a [routerLinkActive]="['active']" [routerLink]="['/ap/associates/list']"><i class="fa fa-user"></i><span> Associates</span></a>
+                        </li>
+                        
+                    </ul>
+                </li>
+
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-street-view"></i> <span>Admin</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li>
+                            <a [routerLink]="['/ap/admin/lookup/', 'userrole']" [routerLinkActive]="['active']">User Roles</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/ap/admin/lookup/', 'role']" [routerLinkActive]="['active']">Roles</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/ap/admin/lookup/', 'department']" [routerLinkActive]="['active']">Departments</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/ap/admin/lookup/', 'employeetype']" [routerLinkActive]="['active']">Employee Types</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/ap/admin/lookup/', 'designation']" [routerLinkActive]="['active']">Designations</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/ap/admin/lookup/', 'projectType']" [routerLinkActive]="['active']">Project Type</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- /.sidebar-menu -->
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <!--<section class="content-header">
+            <h1>
+                {{pageTitle}}
+                <small *ngIf="pageSubtitle">{{pageSubtitle}}</small>
+            </h1>
+        </section>-->
+        <!-- Main content -->
+        <section class="content">
+            <!-- Your Page Content Here -->
+            <router-outlet></router-outlet>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+            Reprot a bug
+        </div>
+        <!-- Default to the left -->
+        <strong>&#169; Copyright 2016 <a href="http://senecaglobal.com/" target="_blank">SenecaGlobal, Inc.</a>.</strong>        All rights reserved.
+    </footer>
+</div>
+<!-- ./wrapper -->

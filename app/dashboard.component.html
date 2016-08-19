@@ -1,0 +1,11 @@
+﻿<div [ngSwitch]="roleName">
+    <div *ngSwitchCase="'HRM'">
+        <ap-hrm-dashboard></ap-hrm-dashboard>
+    </div>
+    <div *ngSwitchCase="'SystemAdmin'">
+        <ap-sysadmin-dashboard></ap-sysadmin-dashboard>
+    </div>
+    <!--<p *ngSwitchCase="XX">1, increment again</p>
+    <p *ngSwitchCase="2">2, stop incrementing</p>-->
+    <div *ngSwitchDefault>I am a default</div>
+</div>

@@ -1,0 +1,148 @@
+<section class="container-fluid">
+    <h3 [hidden]="title==''"><span class="title">{{title}}</span></h3>
+    <div class="row listarea">
+        <div class="row">
+            <section class="col-md-10">
+                <search-filters [columns]="filters" (filtersChange)="onFiltersChanged($event);"></search-filters>
+            </section>
+            <section class="col-md-2">
+                <div class="row actions">
+                    <section class="col-md-12">
+                        <paper-button class="add" (click)="onAdd()" raised>
+                            <iron-icon icon="add"></iron-icon>
+                        </paper-button>
+                    </section>
+                    <!--<section class="col-md-6">
+                        <paper-button class="edit" (click)="onEdit()" raised>
+                            <iron-icon icon="create"></iron-icon>
+                        </paper-button>
+                    </section>-->
+                </div>
+            </section>
+        </div>
+        <div class="row">
+            <vaadin-grid #grdList (selected-items-changed)="onSelectionChanged()" visible-rows="5">
+                <table>
+                    <colgroup>
+                        <col *ngFor="let field of fields" [attr.name]="field.name" [hidden]="field.label == 'Id'" sortable>
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th *ngFor="let field of fields">{{field.label}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of _dataSource | paginate: pagingConfig">
+                            <td *ngFor="let key of keys(item)">
+                                <div *ngIf="key == 'IsActive'">
+                                    <iron-icon icon="check" [attr.icon]="item[key] ? 'check' : 'clear'"></iron-icon>
+                                </div>
+                                <div *ngIf="key != 'IsActive'">
+                                    {{item[key]}}
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </vaadin-grid>
+            <pagination-controls #p [id]="pagingConfig.id" (pageChange)="pagingConfig.currentPage = $event" class="pull-right">
+
+                <ul class="lookup-pagination">
+                    <li class="pagination-previous" [class.disabled]="p.isFirstPage()" *ngIf="p.directionLinks">
+                        <paper-button class="link" raised [disabled]="p.isFirstPage()" (click)="p.previous()">
+                            <PREV</paper-button>
+                    </li>
+
+                    <li *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+                        <a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
+                            <paper-button class="link" raised>{{ page.label }}</paper-button>
+                        </a>
+                        <paper-button *ngIf="p.getCurrent() === page.value" disabled>{{ page.label }}</paper-button>
+                    </li>
+
+                    <li class="pagination-next" [class.disabled]="p.isLastPage()" *ngIf="p.directionLinks">
+                        <paper-button class="link" raised [disabled]="p.isLastPage()" (click)="p.next()">NEXT></paper-button>
+                    </li>
+                </ul>
+
+            </pagination-controls>
+        </div>
+    </div>
+</section>
+
+<paper-toast #messageToaster id="messageToaster"></paper-toast>
+
+<paper-dialog class="colored" id="dialogEdit" #dialogEdit modal exit-animation="fade-out-animation" with-backdrop>
+    <article>
+        <h2>{{ _isEditMode ? "Edit" : "Add" }}
+        </h2>
+        <form class="form-horizontal" #lookupForm="ngForm" (ngSubmit)="onSaveorUpdate($event.value)">
+            <section #inputarea id="inputarea">
+                <ul>
+                    <li *ngFor="let field of fields">
+                        <div [ngSwitch]="field.control">
+                            <div *ngSwitchCase="'text'">
+                                <paper-input #textCntrl ngControl="textCntrl" (value-changed)="textCntrl.fire('input');" ngDefaultControl [(value)]="field.value"
+                                    [label]="field.label" [attr.required]="field.isRequired" [attr.auto-validate]="field.isRequired"
+                                    error-message="{{field.label + ' is required'}}"></paper-input>
+                            </div>
+                            <div *ngSwitchCase="'textarea'">
+                                <paper-textarea [(value)]="field.value" [label]="field.label" [attr.required]="field.isRequired"></paper-textarea>
+                            </div>
+                            <div *ngSwitchCase="'dropdown'">
+                                <vaadin-combo-box [label]="field.label" [items]="field.resources.items" item-label-path="value" item-value-path="key" [(value)]="field.value"
+                                    [required]="field.isRequired" [auto-validate]="field.isRequired"></vaadin-combo-box>
+                            </div>
+                            <div *ngSwitchCase="'datepicker'">
+                                <vaadin-date-picker [(value)]="field.value" [label]="field.label" [required]="field.isRequired" [auto-validate]="field.isRequired"></vaadin-date-picker>
+                            </div>
+                            <div *ngSwitchCase="'checkbox'">
+                                <paper-checkbox [label]="field.label" [(checked)]="field.value">{{field.label}}</paper-checkbox>
+                            </div>
+                            <div *ngSwitchDefault>
+                                <span *ngIf="field.label != 'Id'">
+                                    Not implemented for -
+                                    <h3>{{field.control}}</h3>
+                            </span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="buttons">
+                    <paper-button [disabled]="!lookupForm.form.valid" (click)="lookupForm.ngSubmit.emit(lookupForm)" raised class="save">{{ _isEditMode ? "Update" : "Create" }}</paper-button>
+                    <input type="submit" #btnSubmit name="btnSubmit" value="" hidden="hidden">
+                    <paper-button class="cancel" (click)="onCancel()" raised>Cancel</paper-button>
+                </div>
+            </section>
+        </form>
+
+        <!--<form (ngSubmit)="onSubmit($event.value)" #expenseForm="ngForm">
+            <div class="form">
+                <paper-input #total ngControl="total" ngDefaultControl [value]="expense.total" (value-changed)="total.fire('input');" label="Total"
+                    auto-validate required pattern="[0-9,.]+" error-message="Numeric values only">
+                    <div prefix>$</div>
+                </paper-input>
+
+                <vaadin-date-picker ngControl="date" auto-validate required [value]="expense.date" label="Date"></vaadin-date-picker>
+                <paper-textarea #comment ngControl="comment" ngDefaultControl [value]="expense.comment" (value-changed)="comment.fire('input');"
+                    label="Comment"></paper-textarea>
+            </div>
+
+            <div class="receipt">
+                <input type="hidden" ngControl="receipt" name="receipt" [ngModel]="expense.receipt">
+                <vaadin-upload (upload-before)="upload($event)" accept="image/*">
+                    <div class="file-list">
+                        <img *ngIf="expense.receipt !== 'default'" src={{expense.receipt}}>
+                        <img *ngIf="expense.receipt === 'default'" src="images/default-receipt.png">
+                    </div>
+                </vaadin-upload>
+            </div>
+        </form>
+
+        <div class="buttons-layout">
+            <paper-button class="save" raised [disabled]="!expenseForm.form.valid" (click)="expenseForm.ngSubmit.emit(expenseForm)">Save</paper-button>
+            <paper-button class="cancel" (click)="close()">Cancel</paper-button>
+        </div>-->
+    </article>
+</paper-dialog>

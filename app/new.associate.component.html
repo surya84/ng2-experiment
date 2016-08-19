@@ -1,0 +1,88 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">Add Prospective</h4>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" #newAssocaiteForm="ngForm" (ngSubmit)="onCreate()">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group col-md-12 floating-main">
+                        <paper-input [(value)]="newAssociate.firstName" label="First Name" required
+                                     error-message="First Name is required."></paper-input>
+                    </div>
+                    <div class="form-group col-md-12 floating-main">
+                        <paper-input [(value)]="newAssociate.middleName" label="Middle Name"></paper-input>
+                    </div>
+                    <div class="form-group col-md-12 floating-main">
+                        <paper-input [(value)]="newAssociate.lastName" label="Last Name" required
+                                     error-message="Last Name is required."></paper-input>
+                    </div>
+                    <div class="form-group col-md-12 floating-main">
+                        <vaadin-date-picker [(value)]="newAssociate.dob" label="Date Of Birth" required></vaadin-date-picker>
+                    </div>
+                    <div class="form-group col-md-12 floating-main">
+                        <vaadin-combo-box label="Gender" [items]="genders" [(value)]="newAssociate.gender" required error-message="Gender required"></vaadin-combo-box>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group col-md-12 floating-main">
+                        <vaadin-combo-box label="Marital Status" [items]="maritalStatuses" [(value)]="newAssociate.maritalStatus"></vaadin-combo-box>
+                    </div>
+                    <div class="form-group col-md-12 floating-main">
+                        <vaadin-date-picker [(value)]="newAssociate.dateOfJoining" label="Joining Date"></vaadin-date-picker>
+                    </div>
+                    <div class="form-group col-md-12 floating-main">
+                        <vaadin-combo-box label="Grade" item-label-path="Name" item-value-path="ID"
+                                          [items]="grades" [(value)]="newAssociate.gradeID"></vaadin-combo-box>
+                    </div>
+                    <div class="form-group col-md-12 floating-main">
+                        <vaadin-combo-box label="Designation" item-label-path="Name" item-value-path="ID"
+                                          [items]="designations" [(value)]="newAssociate.designationID"></vaadin-combo-box>
+                    </div>
+                    <div class="form-group col-md-12 floating-main">
+                        <vaadin-combo-box label="Employment Type" [items]="empTypes" item-label-path="Name" item-value-path="Code"
+                                          [(value)]="newAssociate.employmentType" required error-message="Employment Type is required"></vaadin-combo-box>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group col-md-12 floating-main">
+                        <vaadin-combo-box label="Technology" item-label-path="Name" item-value-path="ID" [items]="technologies"
+                         [(value)]="newAssociate.technologyID"></vaadin-combo-box>
+                    </div>
+                    <div class="form-group col-md-12 floating-main">
+                        <vaadin-combo-box label="Department" item-label-path="Description" item-value-path="ID" [items]="departments" 
+                        [(value)]="newAssociate.deptID"></vaadin-combo-box>
+                    </div>
+                    <div class="form-group col-md-12 floating-main">
+                        <vaadin-combo-box label="HR Advisor" item-label-path="Name" item-value-path="ID" [items]="hradvisors" [(value)]="newAssociate.hrAdvisor"></vaadin-combo-box>
+                    </div>
+                    <div class="form-group col-md-12 floating-main">
+                        <paper-input [(value)]="newAssociate.recruitedBy" label="Recruited By"></paper-input>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btns-pa col-md-12">
+                <span>{{newAssociate.id}}</span>
+                <section class="pull-right">
+                    <paper-button raised class="custom indigo" [hidden]="newAssociate.ID > 0">
+                        <button type="submit">Save</button>
+                    </paper-button>
+                   
+                    <paper-button raised class="custom indigo" [hidden]="!newAssociate.ID">
+                        <button type="button" (click)="onUpdate()">Update</button>
+                    </paper-button>
+
+                    <paper-button raised class="custom yellow">
+                        <button type="button" (click)="onClear()">Clear</button>
+                    </paper-button>
+
+                    <paper-button raised class="custom">
+                        <button type="button" (click)="onCancel()">Cancel</button>
+                    </paper-button>
+                </section>
+            </div>
+            <div class="clearfix"></div>
+        </form>
+    </div>
+</div>

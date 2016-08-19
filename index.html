@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base href="/">
+  <title>Associate Portal - SenecaGlobal</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/css/custom.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap 3.3.5 -->
+  <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="assets/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect.
+    -->
+  <link rel="stylesheet" href="assets/css/skins/skin-blue.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="assets/plugins/iCheck/square/blue.css">
+  <!-- Pace style -->
+  <link rel="stylesheet" href="assets/plugins/pace/pace.min.css">
+  <link href="node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet" />
+
+  <!-- PACE -->
+  <script src="assets/plugins/pace/pace.min.js"></script>
+
+  <!-- Polyfills -->
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+  <script src="node_modules/core-js/client/shim.min.js"></script>
+
+  <!-- JavaScript libraries -->
+  <script src="node_modules/zone.js/dist/zone.js"></script>
+  <script src="node_modules/reflect-metadata/Reflect.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+  <!-- Styles -->
+  <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+  <link rel="import" href="bower_components/paper-styles/color.html">
+  <link rel="import" href="bower_components/paper-styles/default-theme.html">
+  <link rel="import" href="bower_components/paper-styles/typography.html">
+  <link rel="import" href="bower_components/paper-styles/shadow.html">
+  <style is="custom-style">
+    body {
+      @apply(--layout-fullbleed);
+      @apply(--paper-font-body1);
+      background: var(--primary-background-color);
+      color: var(--primary-text-color);
+    }
+  </style>
+
+  <!-- Polymer Elements -->
+  <!--<link rel="import" href="bower_components/iron-icons/iron-icons.html">
+    <link rel="import" href="bower_components/app-layout/app-layout.html">
+    <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+    <link rel="import" href="bower_components/paper-input/paper-input.html">
+    <link rel="import" href="bower_components/vaadin-grid/vaadin-grid.html">
+    <link rel="import" href="bower_components/vaadin-date-picker/vaadin-date-picker.html">-->
+
+  <link rel="import" href="bower_components/iron-icons/iron-icons.html">
+  <link rel="import" href="bower_components/app-layout/app-layout.html">
+  <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+  <link rel="import" href="bower_components/paper-input/paper-input.html">
+  <link rel="import" href="bower_components/paper-item/paper-item.html">
+  <link rel="import" href="bower_components/paper-card/paper-card.html">
+  <link rel="import" href="bower_components/paper-toast/paper-toast.html">
+  <link rel="import" href="bower_components/paper-checkbox/paper-checkbox.html">
+  <link rel="import" href="bower_components/paper-input/paper-textarea.html">
+  <link rel="import" href="bower_components/paper-dialog/paper-dialog.html">
+  <link rel="import" href="bower_components/iron-pages/iron-pages.html">
+  <link rel="import" href="/bower_components/vaadin-upload/vaadin-upload.html">
+
+  <link rel="import" href="/bower_components/paper-drawer-panel/paper-drawer-panel.html">
+  <link rel="import" href="/bower_components/paper-header-panel/paper-header-panel.html">
+  <link rel="import" href="/bower_components/paper-toolbar/paper-toolbar.html">
+  <link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout.html">
+
+  <link rel="import" href="bower_components/vaadin-grid/vaadin-grid.html">
+  <link rel="import" href="bower_components/vaadin-date-picker/vaadin-date-picker.html">
+  <link rel="import" href="bower_components/vaadin-combo-box/vaadin-combo-box.html">
+
+  <!-- SystemJS Configuration -->
+  <script src="systemjs.config.js"></script>
+  <script>
+      document.addEventListener('WebComponentsReady', function() {
+        System.import('app/main').catch(function(err){ console.error(err); });
+      });
+    </script>
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+  <associate-portal>Associate Portal Loading..</associate-portal>
+
+  <script src="assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+  <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/plugins/iCheck/icheck.min.js"></script>
+  <script src="node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+
+  <!-- AdminLTE App -->
+  <script src="assets/js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+﻿ul {
+  list-style-type: none;
+}
+
+.paper-button-0 {
+  color: #FFF;
+  padding: 0.4em 0.57em;
+}
+
+.save {
+  background-color: #3C8DBC;
+}
+
+.add {
+  background-color: deepskyblue;
+}
+
+.edit {
+  background-color: indigo;
+}
+
+.delete {
+  background-color: orangered;
+}
+
+
+/*paper-dialog.positioned {
+  position: fixed;
+  left: 250px;
+  overflow: auto;
+}*/
+
+#inputarea {
+  width: 600px;
+  height: auto;
+}
+
+#inputarea paper-button {
+  color: #000;
+}
+
+#messageToaster {
+  background-color: #00A65A;
+  color: black;
+}
+
+paper-toast {
+  left: auto !important;
+  right: 10px;
+}
+
+.actions {
+  margin-top: 1.2em;
+}
+
+thead.vaadin-grid-header th {
+  background: #37474F !important;
+  color: #ccc !important;
+  font-size: 1.2em !important;
+  font-weight: 400 !important;
+}
+
+tr.vaadin-grid-row-stripe td {
+  background: #F7F8F8 !important;
+}
+
+td.status-new {
+  font-weight: bold;
+}
+
+thead.vaadin-grid-header th.last-frozen {
+  border-right: 1px solid #37474F !important;
+}
+
+.vaadin-grid-header.vaadin-grid .sort-asc.vaadin-grid:after {
+  content: "\e7c3 " attr(sort-order);
+  font-family: Vaadin-Icons;
+  font-size: 16px;
+  speak: none;
+  font-weight: normal;
+  font-variant: normal;
+  font-style: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  color: #80CBC4;
+}
+
+.vaadin-grid-header.vaadin-grid .sort-desc.vaadin-grid:after {
+  content: "\e7bc " attr(sort-order);
+  font-family: Vaadin-Icons;
+  font-size: 16px;
+  font-weight: normal;
+  font-variant: normal;
+  font-style: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  color: #80CBC4;
+}
+
+pagination-controls ul.lookup-pagination > li {
+  padding: 5px;
+  display: inline-block;
+}
+
+paper-button {
+  min-width: 2em;
+  padding: 0.2em 0.26em;
+}
+
+paper-button.link {
+  --paper-button-ink-color: var(--paper-pink-a200);
+  --paper-button-flat-keyboard-focus: {
+    background-color: var(--paper-pink-a200);
+    color: white !important;
+  }
+  ;
+  --paper-button-raised-keyboard-focus: {
+    background-color: var(--paper-pink-a200) !important;
+    color: white !important;
+  }
+  ;
+}
+
+paper-button.disabled {
+  --paper-button-ink-color: var(--paper-blue-a700);
+}

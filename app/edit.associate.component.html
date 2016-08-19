@@ -1,0 +1,26 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">Edit Associate</h4>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" #assocaiteForm="ngForm" (ngSubmit)="onUpdate()">
+            <div class="col-lg-4">
+                <div class="form-group col-md-12 floating-main">
+                    <paper-input [(value)]="newAssociate.firstName" label="First Name" required error-message="First Name is required."></paper-input>
+                </div>
+                <div class="form-group col-md-12 floating-main">
+                    <paper-input [(value)]="newAssociate.middleName" label="Middle Name"></paper-input>
+                </div>
+                <div class="form-group col-md-12 floating-main">
+                    <paper-input [(value)]="newAssociate.lastName" label="Last Name" required error-message="Last Name is required."></paper-input>
+                </div>
+                <div class="form-group col-md-12 floating-main">
+                    <vaadin-date-picker [(value)]="newAssociate.dob" label="Date Of Birth" required></vaadin-date-picker>
+                </div>
+                <div class="form-group col-md-12 floating-main">
+                    <vaadin-combo-box label="Gender" [items]="genders" [(value)]="newAssociate.gender" required error-message="Gender required"></vaadin-combo-box>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

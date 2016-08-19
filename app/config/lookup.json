@@ -1,0 +1,225 @@
+{
+    "userrole": {
+        "title": "User Roles",
+        "fields": [
+            {
+                "label": "Id",
+                "name": "RoleId",
+                "type": "number"
+            },
+            {
+                "label": "User Name",
+                "name": "UserName",
+                "type": "list",
+                "control": "dropdown",
+                "resources": {
+                    "list": {
+                        "url": "/UserRole/GetUsers",
+                        "key": "UserId",
+                        "value": "UserName"
+                    },
+                    "items": []
+                }
+            },
+            {
+                "label": "Role Name",
+                "name": "RoleName",
+                "type": "list",
+                "control": "dropdown",
+                "resources": {
+                    "list": {
+                        "url": "/UserRole/GetRoles",
+                        "key": "ID",
+                        "value": "Name"
+                    },
+                    "items": []
+                }
+            },
+            {
+                "label": "Active",
+                "name": "IsActive",
+                "type": "boolean",
+                "control": "checkbox"
+            },
+            {
+                "label": "Primary",
+                "name": "PrimaryRole",
+                "type": "string",
+                "control": "text"
+            }
+        ],
+        "resources": {
+            "list": "/UserRole/GetUserRoleDetails",
+            "create": "/RoleMaster/CreateUserRole",
+            "update": "/RoleMaster/UpdateRoleMasterDetails",
+            "delete": ""
+        }
+    },
+    "role": {
+        "title": "Roles",
+        "fields": [
+            {
+                "label": "Id",
+                "name": "RoleId",
+                "type": "number"
+            },
+            {
+                "label": "Role Name",
+                "name": "RoleName",
+                "type": "string",
+                "control": "text"
+            },
+            {
+                "label": "Description",
+                "name": "RoleDescription",
+                "type": "string",
+                "control": "textarea"
+            },
+            {
+                "label": "Active",
+                "name": "IsActive",
+                "type": "boolean",
+                "control": "checkbox"
+            }
+        ],
+        "resources": {
+            "list": "/RoleMaster/GetRoleMasterDetails",
+            "create": "/RoleMaster/CreateUserRole",
+            "update": "/RoleMaster/UpdateRoleMasterDetails",
+            "delete": ""
+        }
+    },
+    "department": {
+        "title": "Department",
+        "fields": [
+            {
+                "label": "Id",
+                "name": "DepartmentId",
+                "type": "number"
+            },
+            {
+                "label": "Department Code",
+                "name": "DepartmentCode",
+                "type": "string",
+                "control": "text",
+                "isRequired": true
+            },
+            {
+                "label": "Description",
+                "name": "Description",
+                "type": "string",
+                "control": "textarea",
+                "isRequired": true
+            },
+            {
+                "label": "Active",
+                "name": "IsActive",
+                "type": "boolean",
+                "control": "checkbox"
+            }
+        ],
+        "resources": {
+            "list": "/UserDepartment/GetUserDepartmentDetails",
+            "create": "/UserDepartment/CreateDepartment/",
+            "update": "/UserDepartment/UpdateUserDepartmentDetails/",
+            "delete": ""
+        }
+    },
+    "employeetype": {
+        "title": "Employee Type",
+        "fields": [
+            {
+                "label": "Code",
+                "name": "Code",
+                "type": "string",
+                "control": "text"
+            },
+            {
+                "label": "Name",
+                "name": "Name",
+                "type": "string",
+                "control": "textarea"
+            },
+            {
+                "label": "Active",
+                "name": "IsActive",
+                "type": "boolean",
+                "control": "checkbox"
+            }
+        ],
+        "resources": {
+            "list": "/ProspectiveAssociate/GetEmpTypes",
+            "create": "",
+            "update": "",
+            "delete": ""
+        }
+    },
+    "designation": {
+        "title": "Designation",
+        "fields": [
+            {
+                "label": "Id",
+                "name": "ID",
+                "type": "number"
+            },
+            {
+                "label": "Code",
+                "name": "DesignationCode",
+                "type": "string",
+                "control": "text"
+            },
+            {
+                "label": "Name",
+                "name": "DesignationName",
+                "type": "string",
+                "control": "textarea"
+            },
+            {
+                "label": "Active",
+                "name": "IsActive",
+                "type": "boolean",
+                "control": "checkbox"
+            }
+        ],
+        "resources": {
+            "list": "/Designation/GetDesignationDetails",
+            "create": "/Designation/SaveDesignationDetails",
+            "update": "/Designation/UpdateDesignationDetails",
+            "delete": ""
+        }
+    },
+    "projectType": {
+        "title": "Project Type",
+        "fields": [
+            {
+                "label": "Id",
+                "name": "ProjectTypeId",
+                "type": "number"
+            },
+            {
+                "label": "Code",
+                "name": "ProjectTypeCode",
+                "type": "string",
+                "control": "text"
+            },
+            {
+                "label": "Description",
+                "name": "Description",
+                "type": "string",
+                "control": "textarea"
+            },
+            {
+                "label": "Active",
+                "name": "IsActive",
+                "type": "boolean",
+                "control": "checkbox"
+            }
+        ],
+        "resources": {
+            "list": "/ProjectTypeMaster/GetProjectTypes",
+            "create": "/ProjectTypeMaster/CreateProjectType/",
+            "update": "/ProjectTypeMaster/UpdateProjectType/",
+            "delete": ""
+        }
+    }
+}

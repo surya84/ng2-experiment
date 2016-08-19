@@ -1,0 +1,42 @@
+@import '';
+.hidden {
+    display: none;
+}
+
+.searcharea {
+    display: inline-block;
+    width: 100%;
+}
+
+.searcharea paper-button {
+    vertical-align: bottom;
+}
+
+.searcharea paper-button.search {
+    padding: 0.25em 0.2em;
+    background-color: #3C8DBC;
+    color: #FFF;
+}
+
+.searcharea paper-button.clear, .searcharea paper-button.cancel {
+    background-color: #CCC;
+    color: #FFF;
+}
+
+.checkbox-huge {
+    height: 25px;
+    width: 25px;
+}
+
+.paper-button-0 {
+    padding: 0.4em 0.57em;
+}
+
+paper-toast {
+    left: auto !important;
+    right: 10px;
+}
+
+.actions {
+    margin-top: 1.2em;
+}

@@ -1,0 +1,32 @@
+﻿{
+  "ServerUrl": "http://192.168.2.37/AP.Services/api",
+  "base64Key": "16rdKQfqN3L4TY7YktgxBw==",
+  "Crypto-Key": "8080808080808080",
+  "Crypto-iv": "8080808080808080",
+  "API": {
+    "Associate": {
+      "list": "/ProspectiveAssociate/GetPADetails",
+      "create": "/ProspectiveAssociate/AddPADetails",
+      "update": "",
+      "get": ""
+    },
+    "EmployeeType": {
+      "list": "/ProspectiveAssociate/GetEmpTypes"
+    },
+    "Grade": {
+      "list": "/UserGrade/GetGradesDetails"
+    },
+    "Department": {
+      "list": "/UserDepartment/GetUserDepartmentDetails"
+    },
+    "Designation": {
+      "list": "/ProspectiveAssociate/GetDesignations"
+    },
+    "Technology": {
+      "list": "/ProspectiveAssociate/GetTechnologies"
+    },
+    "HRAdvisor": {
+      "list": "/ProspectiveAssociate/GetHRAdvisors"
+    }
+  }
+}

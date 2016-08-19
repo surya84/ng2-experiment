@@ -1,0 +1,35 @@
+pagination-controls ul.lookup-pagination > li {
+    margin-top: 3px;
+    padding: 0.5px;
+    display: inline-block;
+}
+
+paper-button {
+    min-width: 2em;
+    padding: 0.2em 0.26em;
+}
+
+paper-button.link {
+    background-color: var(--paper-cyan-a700);
+    color: white;
+    --paper-button-raised-keyboard-focus: {
+        background-color: var(--paper-cyan-a200) !important;
+        color: white !important;
+    }
+    ;
+}
+
+paper-button.prev:enabled, paper-button.next:enabled {
+    background-color: var(--paper-cyan-a700);
+    color: white;
+    --paper-button-raised-keyboard-focus: {
+        background-color: var(--paper-cyan-a200) !important;
+        color: white !important;
+    }
+    ;
+}
+
+paper-button.disabled {
+    background-color: var(--paper-blue-a700);
+    color: black;
+}

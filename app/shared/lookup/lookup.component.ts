@@ -10,14 +10,15 @@ import { SearchFilters, IFilter } from '../search-filter/searchfilter.component'
 import { AppInjector } from '../../shared/injector';
 import { ConfigService } from '../../config/config.service';
 import { NgForm } from '@angular/common';
-import { PaginatePipe, PaginationControlsCmp, PaginationService, IPaginationInstance } from 'ng2-pagination';
+import { PaginationComponent, IPaginationInstance, PaginatePipe, PaginationService } from '../pagination/pagination.component';
+
 
 declare var moment: any, Polymer: any, swal: any;
 declare var accounting: any;
 @Component({
     selector: 'ap-lookup',
     templateUrl: './app/shared/lookup/lookup.component.html',
-    directives: [SearchFilters, NgSwitch,
+    directives: [PaginationComponent, SearchFilters, NgSwitch,
         PolymerElement('vaadin-date-picker'),
         PolymerElement('paper-input'),
         PolymerElement('paper-textarea'),
@@ -25,12 +26,11 @@ declare var accounting: any;
         PolymerElement('vaadin-combo-box'),
         PolymerElement('paper-checkbox'),
         PolymerElement('vaadin-grid'),
-        PolymerElement('vaadin-upload'),
-        PaginationControlsCmp
+        PolymerElement('vaadin-upload')
     ],
+    styleUrls: [`./app/shared/lookup/lookup.component.css`],
     pipes: [PaginatePipe],
-    providers: [PaginationService],
-    styleUrls: [`./app/shared/lookup/lookup.component.css`]
+    providers: [PaginationService]
 })
 export class LookupComponent implements OnInit {
 
@@ -39,7 +39,7 @@ export class LookupComponent implements OnInit {
 
     public pagingConfig: IPaginationInstance = {
         id: 'lookup-paging',
-        itemsPerPage: 10,
+        itemsPerPage: 5,
         currentPage: 1
     };
 

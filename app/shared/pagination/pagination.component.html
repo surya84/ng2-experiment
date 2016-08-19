@@ -1,0 +1,21 @@
+<pagination-controls #p [id]="pagingConfig.id" (pageChange)="pagingConfig.currentPage = $event" class="pull-right">
+
+    <ul class="lookup-pagination">
+        <li class="pagination-previous" [class.disabled]="p.isFirstPage()" *ngIf="p.directionLinks">
+            <paper-button class="prev" raised [disabled]="p.isFirstPage()" (click)="p.previous()">
+                <</paper-button>
+        </li>
+
+        <li *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+            <a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
+                <paper-button class="link" raised>{{ page.label }}</paper-button>
+            </a>
+            <paper-button *ngIf="p.getCurrent() === page.value" disabled>{{ page.label }}</paper-button>
+        </li>
+
+        <li class="pagination-next" [class.disabled]="p.isLastPage()" *ngIf="p.directionLinks">
+            <paper-button class="next" raised [disabled]="p.isLastPage()" (click)="p.next()">></paper-button>
+        </li>
+    </ul>
+
+</pagination-controls>

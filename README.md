@@ -38,7 +38,9 @@ Contains all API and service locations.
 ## How do I integrate a external module into application?
 Ex: ng2-pagination
 Here we take ng2-pagination to integrate 
-    Step1: Add package into package.json -> dependencies
+
+```sh
+Step1: Add package into package.json -> dependencies
 
             "ng2-pagination": "0.3.5"
 
@@ -53,6 +55,7 @@ Here we take ng2-pagination to integrate
         'ng2-pagination': { defaultExtension: 'js' }
 
     We have integrated the module to our app, consume it in your typescript files.
+```
 
 ## Others
 *We are targeting ES5 and added some features of ES6 (like promise). Makesure we have typings installed properly*

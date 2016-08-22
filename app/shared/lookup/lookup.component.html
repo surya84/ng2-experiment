@@ -1,5 +1,6 @@
 <section class="container-fluid">
-    <h3 [hidden]="title==''"><span class="title">{{title}}</span></h3>
+    <h3 [hidden]="title==''">
+        <span class="title">{{title}}</span></h3>
     <div class="row listarea">
         <div class="row">
             <section class="col-md-10">
@@ -12,19 +13,15 @@
                             <iron-icon icon="add"></iron-icon>
                         </paper-button>
                     </section>
-                    <!--<section class="col-md-6">
-                        <paper-button class="edit" (click)="onEdit()" raised>
-                            <iron-icon icon="create"></iron-icon>
-                        </paper-button>
-                    </section>-->
                 </div>
             </section>
         </div>
         <div class="row">
-            <vaadin-grid #grdList (selected-items-changed)="onSelectionChanged()" visible-rows="5">
+            <vaadin-grid #grdList (selected-items-changed)="onSelectionChanged()" [attr.visible-rows]="_visibleRowCount">
                 <table>
                     <colgroup>
                         <col *ngFor="let field of fields" [attr.name]="field.name" [hidden]="field.label == 'Id'" sortable>
+                        <col name="Edit">
                     </colgroup>
                     <thead>
                         <tr>
@@ -45,7 +42,7 @@
                     </tbody>
                 </table>
             </vaadin-grid>
-           <ap-pagination [pagingConfig]="pagingConfig"></ap-pagination>
+            <ap-pagination [pagingConfig]="pagingConfig"></ap-pagination>
         </div>
     </div>
 </section>

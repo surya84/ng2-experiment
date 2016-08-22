@@ -1,1 +1,8 @@
-﻿paper-button{padding:.5em .2em;}
+﻿paper-button {
+    padding: .5em .2em;
+}
+
+h3 {
+    padding: 0;
+    margin: 0;
+}

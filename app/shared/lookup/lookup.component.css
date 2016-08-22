@@ -98,3 +98,12 @@ thead.vaadin-grid-header th.last-frozen {
   -webkit-font-smoothing: antialiased;
   color: #80CBC4;
 }
+
+h3 {
+  padding: 0;
+  margin: 0;
+}
+
+th {
+  background-color: var(--paper-blue-a700);
+}

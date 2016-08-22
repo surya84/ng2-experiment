@@ -12,9 +12,10 @@ import { ConfigService } from '../../config/config.service';
 import { NgForm } from '@angular/common';
 import { PaginationComponent, IPaginationInstance, PaginatePipe, PaginationService } from '../pagination/pagination.component';
 
-
 declare var moment: any, Polymer: any, swal: any;
 declare var accounting: any;
+declare var _: any;
+
 @Component({
     selector: 'ap-lookup',
     templateUrl: './app/shared/lookup/lookup.component.html',
@@ -36,10 +37,11 @@ export class LookupComponent implements OnInit {
 
     fields: Array<IField>;
     title: string;
+    private _visibleRowCount = 5;
 
     public pagingConfig: IPaginationInstance = {
         id: 'lookup-paging',
-        itemsPerPage: 5,
+        itemsPerPage: this._visibleRowCount,
         currentPage: 1
     };
 
@@ -163,7 +165,19 @@ export class LookupComponent implements OnInit {
     }
 
     onSortOrderChanged(e: any) {
-        debugger;
+        var idx = this.grdList.nativeElement.sortOrder[0].column;
+        var lesser = this.grdList.nativeElement.sortOrder[0].direction == 'asc' ? -1 : 1;
+        var colName = this.keys(this._dataSource[0])[idx];
+
+        console.log(colName);
+
+        if (lesser == -1) {
+            this._dataSource = _.sortBy(this._dataSource, colName);
+        } else {
+            this._dataSource = _.sortBy(this._dataSource, colName).reverse();
+        }
+
+        this.grdList.nativeElement.refreshItems();
     }
 
     onSelectionChanged() {
@@ -195,11 +209,11 @@ export class LookupComponent implements OnInit {
             return;
         }
 
-        this._dataSource = this._items.filter((item) => {
+        this._dataSource = _.filter(this._items, function (item: any) {
             if (selectedFilter.type == 'boolean') {
                 return item[selectedFilter.name] == selectedFilter.value.is;
             } else if (selectedFilter.type == 'string') {
-                return item[selectedFilter.name] && item[selectedFilter.name].indexOf(selectedFilter.value.contains) > -1;
+                return ~item[selectedFilter.name].toLowerCase().indexOf(selectedFilter.value.contains);
             } else if (selectedFilter.type == 'date') {
 
                 if (item[selectedFilter.name]) {
@@ -214,6 +228,26 @@ export class LookupComponent implements OnInit {
                 return false;
             }
         });
+
+        // this._dataSource = this._items.filter((item) => {
+        //     if (selectedFilter.type == 'boolean') {
+        //         return item[selectedFilter.name] == selectedFilter.value.is;
+        //     } else if (selectedFilter.type == 'string') {
+        //         return item[selectedFilter.name] && item[selectedFilter.name].indexOf(selectedFilter.value.contains) > -1;
+        //     } else if (selectedFilter.type == 'date') {
+
+        //         if (item[selectedFilter.name]) {
+        //             let minDate = selectedFilter.value.min;
+        //             let maxDate = selectedFilter.value.max;
+
+        //             return moment(item[selectedFilter.name]).isBetween(moment(minDate), moment(maxDate));
+        //         }
+
+        //         return false;
+        //     } else {
+        //         return false;
+        //     }
+        // });
 
         this.grdList.nativeElement.refreshItems();
     }
@@ -317,11 +351,6 @@ export class LookupComponent implements OnInit {
         // };
 
         grid.addEventListener('sort-order-changed', (e: any) => {
-            let sortBy = grid.columns[e.detail.value[0].column].name;
-            let sortOrder = { sortBy: sortBy, direction: e.detail.value[0].direction };
-
-            // sort order is fired for the first time before grid has been initialized properly,
-            // so scrolling will crash.
             try {
                 this.onSortOrderChanged(e);
             } catch (err) {
@@ -329,5 +358,4 @@ export class LookupComponent implements OnInit {
             }
         });
     }
-
 }

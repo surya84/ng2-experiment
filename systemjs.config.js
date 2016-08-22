@@ -13,7 +13,8 @@
     'rxjs': 'node_modules/rxjs',
     '@vaadin': 'node_modules/@vaadin',
     'moment': 'node_modules/moment',
-    'ng2-pagination': 'node_modules/ng2-pagination'
+    'ng2-pagination': 'node_modules/ng2-pagination',
+    'underscore': 'node_modules/underscore'
   };
 
   // packages tells the System loader how to load when no filename and/or no extension
@@ -26,6 +27,7 @@
     'angular2-in-memory-web-api': { defaultExtension: 'js' },
     '@vaadin/angular2-polymer': { main: 'index.js', defaultExtension: 'js' },
     'moment': { main: 'moment', defaultExtension: 'js' },
+    'underscore': { main: 'underscore', defaultExtension: 'js' },
     'ng2-pagination': { main: 'index', defaultExtension: 'js' }
   };
 

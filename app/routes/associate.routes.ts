@@ -1,9 +1,9 @@
 ﻿import { provideRouter, RouterConfig } from '@angular/router';
 
-import { NewAssociateComponent } from '../new.associate.component';
-import { ProspectiveAssociateComponent } from '../prospective.associate.component';
-import { ListAssociatesComponent } from '../list.associate.component';
-import { EditAssociateComponent } from '../edit.associate.component';
+import { NewAssociateComponent } from '../components/associate/new.associate.component';
+import { ProspectiveAssociateComponent } from '../components/associate/prospective.associate.component';
+import { ListAssociatesComponent } from '../components/associate/list.associate.component';
+import { EditAssociateComponent } from '../components/associate/edit.associate.component';
 
 export const ASSOCIATE_ROUTER_PROVIDERS: RouterConfig = [
     { path: '', component: ListAssociatesComponent },

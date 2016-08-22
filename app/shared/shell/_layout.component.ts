@@ -10,8 +10,8 @@ import { IUser, User } from '../../models/index';
 import { AuthenticationService } from '../../services/authetication.service';
 import { DashboardService } from '../../services/dashboard.service';
 
-import { DashboardComponent } from '../../dashboard.component';
-import { AssociateComponent } from '../../associate.component';
+import { DashboardComponent } from '../../components/dashboard/dashboard.component';
+import { AssociateComponent } from '../../components/associate/associate.component';
 
 declare var jQuery: any, swal: any;
 

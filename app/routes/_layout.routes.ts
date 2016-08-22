@@ -1,7 +1,7 @@
 ﻿import { RouterConfig } from '@angular/router';
 
-import { DashboardComponent } from '../dashboard.component';
-import { AssociateComponent } from '../associate.component';
+import { DashboardComponent } from '../components/dashboard/dashboard.component';
+import { AssociateComponent } from '../components/associate/associate.component';
 
 import { ASSOCIATE_ROUTER_PROVIDERS } from './associate.routes';
 

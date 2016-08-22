@@ -1,16 +1,16 @@
 import { provideRouter, RouterConfig } from '@angular/router';
 
-import { LoginComponent } from '../login/login.component';
+import { LoginComponent } from '../components/login/login.component';
 import { MasterLayoutComponent } from '../shared/shell/_layout.component';
 import { LAYOUT_ROUTER_PROVIDERS } from './_layout.routes';
-import { DashboardComponent } from '../dashboard.component';
-import { AssociateComponent } from '../associate.component';
+import { DashboardComponent } from '../components/dashboard/dashboard.component';
+import { AssociateComponent } from '../components/associate/associate.component';
 
-import { NewAssociateComponent } from '../new.associate.component';
-import { ProspectiveAssociateComponent } from '../prospective.associate.component';
-import { ListAssociatesComponent } from '../list.associate.component';
-import { EditAssociateComponent } from '../edit.associate.component';
-import { AdminComponent } from '../admin.component';
+import { NewAssociateComponent } from '../components/associate/new.associate.component';
+import { ProspectiveAssociateComponent } from '../components/associate/prospective.associate.component';
+import { ListAssociatesComponent } from '../components/associate/list.associate.component';
+import { EditAssociateComponent } from '../components/associate/edit.associate.component';
+import { AdminComponent } from '../components/admin/admin.component';
 
 import { LookupComponent } from '../shared/lookup/lookup.component';
 
